@@ -9,14 +9,16 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <h1 class="navbar-brand navbar-brand-autodark">
-        <a href=".">
+      <h1 class="navbar-brand">
+        <a href="." class="d-flex">
           <img
+            src="@/assets/logo.svg"
             width="110"
             height="32"
             alt=" SIPTA"
             class="navbar-brand-image"
           />
+          <span class="navbar-text">sipta</span>
         </a>
       </h1>
       <div class="navbar-nav flex-row d-lg-none">
@@ -49,9 +51,7 @@
             data-bs-toggle="dropdown"
             aria-label="Open user menu"
           >
-            <span
-              class="avatar avatar-sm" 
-            >FR</span>
+            <span class="avatar avatar-sm">FR</span>
             <span
               class="avatar avatar-sm"
               style="background-image: url(./static/avatars/000m.jpg)"
@@ -83,8 +83,8 @@
           </li>
           <li class="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle show" 
-              href="#navbar-base" 
+              class="nav-link dropdown-toggle show"
+              href="#navbar-base"
               role="button"
               aria-expanded="true"
             >
@@ -104,16 +104,20 @@
                   </router-link>
                 </div>
                 <div class="dropdown-menu-column">
-                  <router-link class="dropdown-item" to="data"> Data </router-link>
-                  <router-link class="dropdown-item" to="stats"> Statistics </router-link>
+                  <router-link class="dropdown-item" to="data">
+                    Data
+                  </router-link>
+                  <router-link class="dropdown-item" to="stats">
+                    Statistics
+                  </router-link>
                 </div>
               </div>
             </div>
           </li>
           <li class="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle  show"
-              href="#navbar-base" 
+              class="nav-link dropdown-toggle show"
+              href="#navbar-base"
               role="button"
               aria-expanded="true"
             >
@@ -125,15 +129,21 @@
             <div class="dropdown-menu show">
               <div class="dropdown-menu-columns">
                 <div class="dropdown-menu-column">
-                  <router-link class="dropdown-item" to="train"> Training </router-link>
-                  <router-link class="dropdown-item" to="logs"> Logging   </router-link>
-                  <router-link class="dropdown-item" to="report"> Report  </router-link>
+                  <router-link class="dropdown-item" to="train">
+                    Training
+                  </router-link>
+                  <router-link class="dropdown-item" to="logs">
+                    Logging
+                  </router-link>
+                  <router-link class="dropdown-item" to="report">
+                    Report
+                  </router-link>
                 </div>
               </div>
             </div>
           </li>
           <li class="nav-item">
-             <router-link class="nav-link" to="settings">
+            <router-link class="nav-link" to="settings">
               <span class="nav-link-icon d-md-none d-lg-inline-block">
                 <i class="ti ti-settings"></i>
               </span>
@@ -161,15 +171,15 @@ export default {
     return {
       DataExpanded: false,
       ModelsExpanded: false,
-    }
+    };
   },
   props: {
     msg: String,
   },
-  created(){
+  created() {
     let a = this.$router.path;
     console.log(a);
-  }
+  },
 };
 </script>
 
