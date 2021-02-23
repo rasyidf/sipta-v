@@ -1,12 +1,13 @@
 <template>
   <div class="container-xl">
-    <PageHeader title="Report" subtitle="Models"/> 
-    <h1>This is an Class page</h1>
+    <PageHeader title="Classes" subtitle="Models"/> 
+    <Table />
   </div>
 </template>
 <script>
 import PageHeader from "@/components/PageHeader.vue";
+import Table from "@/components/Table.vue";
 export default { 
-  components: { PageHeader },
+  components: { PageHeader,Table },
 };
 </script>

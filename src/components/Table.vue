@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Invoices</h3>
+      <h3 class="card-title">{{title}}</h3>
     </div>
     <div class="card-body border-bottom py-3">
       <div class="d-flex">
@@ -9,9 +9,9 @@
           Show
           <div class="mx-2 d-inline-block">
             <input
+              :value="maxItem"
               type="text"
-              class="form-control form-control-sm"
-              value="8"
+              class="form-control form-control-sm" 
               size="3"
               aria-label="Invoices count"
             />
@@ -98,7 +98,7 @@
     </div>
     <div class="card-footer d-flex align-items-center">
       <p class="m-0 text-muted">
-        Showing <span>1</span> to <span>8</span> of <span>16</span> entries
+        Showing <span>{{pageStart}}</span> to <span>{{pageEnd}}</span> of <span>{{MaxItem}}</span> entries
       </p>
       <ul class="pagination m-0 ms-auto">
         <li class="page-item disabled">
@@ -152,7 +152,15 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'Table',
+  props: {
+    title: String,
+    maxItems: Number, 
+
+  }
+
+};
 </script>
 
 <style>

@@ -2,7 +2,6 @@
   <div class="container-xl">
     <PageHeader title="Dashboard" subtitle="home"/>
     <div class="row row-deck row-cards">
-        
         <div class="col-md-8">
           <div class="card" style="height: calc(24rem + 10px)">
             <div class="card-body card-body-scrollable card-body-scrollable-shadow">
