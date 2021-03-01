@@ -2,7 +2,7 @@
   <div class="card" style="height: calc(24rem + 10px)">
     <div class="card-body card-body-scrollable card-body-scrollable-shadow">
       <div class="divide-y-4">
-        <DataLogItem v-for="i in 10" :key="i"/>
+        <DataLogItem v-for="i in datalogs" :key="i" :disp="i.disp" :msg="i.msg" :date="i.date" :background="i.background"/>
       </div>
     </div>
   </div>
@@ -10,6 +10,15 @@
 <script>
 import DataLogItem from "@/components/dashboard/DataLogItem.vue";
 export default {
+    data() {
+    return {
+      datalogs: [
+          {
+             id: 1, disp:'!', msg: 'This is Data Log', date:'today', background:'bg-success'  
+          }
+      ],
+    };
+  },
     components: { DataLogItem }
 }
 </script>
