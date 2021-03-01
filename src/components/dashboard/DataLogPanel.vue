@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="height: calc(24rem + 10px)">
+  <div class="card" style="height: calc(25rem + 10px)">
     <div class="card-body card-body-scrollable card-body-scrollable-shadow">
       <div class="divide-y-4">
         <DataLogItem v-for="i in datalogs" :key="i" :disp="i.disp" :msg="i.msg" :date="i.date" :background="i.background"/>
