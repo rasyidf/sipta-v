@@ -1,6 +1,6 @@
 <template>
   <div class="container-xl">
-    <PageHeader title="Report" subtitle="Models"/> 
+    <PageHeader title="Data" subtitle="Models" /> 
     <h1>This is an Data page</h1>
   </div>
 </template>

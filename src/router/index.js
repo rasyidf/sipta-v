@@ -14,53 +14,68 @@ const routes = [
   },
   {
     path: '/docs',
-    name: 'Docs', 
-    component: () => import(/* webpackChunkName: "docs" */ '../views/Docs.vue')
+    name: 'Docs',
+    default:'intro',
+    component: () => import(/* webpackChunkName: "docs" */ '../views/Docs.vue'),
+    children: [
+      { 
+        path:'intro',
+        component: () => import(/* webpackChunkName: "intro" */ '../views/docs/intro.vue')
+      },
+      {
+        path: 'init',
+        component: () => import(/* webpackChunkName: "intro" */ '../views/docs/intro.vue')
+      },
+      {
+        path: 'changes',
+        component: () => import(/* webpackChunkName: "changes" */ '../views/docs/changes.vue')
+      }
+    ]
   },
   {
     path: '/settings',
-    name: 'Settings', 
+    name: 'Settings',
     component: () => import(/* webpackChunkName: "settings" */ '../views/Settings.vue')
   },
   {
     path: '/features',
-    name: 'Features', 
-    component: () => import(/* webpackChunkName: "features" */ '../views/Data/Features.vue')
+    name: 'Features',
+    component: () => import(/* webpackChunkName: "features" */ '../views/data/Features.vue')
   },
   {
     path: '/classes',
-    name: 'Classes', 
-    component: () => import(/* webpackChunkName: "classes" */ '../views/Data/Classes.vue')
+    name: 'Classes',
+    component: () => import(/* webpackChunkName: "classes" */ '../views/data/Classes.vue')
   },
   {
     path: '/data',
-    name: 'Data', 
-    component: () => import(/* webpackChunkName: "data" */ '../views/Data/Data.vue')
+    name: 'Data',
+    component: () => import(/* webpackChunkName: "data" */ '../views/data/Data.vue')
   },
   {
     path: '/stats',
-    name: 'Stats', 
-    component: () => import(/* webpackChunkName: "stats" */ '../views/Data/Statistics.vue')
+    name: 'Stats',
+    component: () => import(/* webpackChunkName: "stats" */ '../views/data/Statistics.vue')
   },
   {
     path: '/train',
-    name: 'Train', 
-    component: () => import(/* webpackChunkName: "train" */ '../views/Models/Train.vue')
+    name: 'Train',
+    component: () => import(/* webpackChunkName: "train" */ '../views/models/Train.vue')
   },
   {
     path: '/logs',
-    name: 'Logs', 
-    component: () => import(/* webpackChunkName: "logs" */ '../views/Models/Logs.vue')
+    name: 'Logs',
+    component: () => import(/* webpackChunkName: "logs" */ '../views/models/Logs.vue')
   },
   {
     path: '/report',
-    name: 'Report', 
-    component: () => import(/* webpackChunkName: "report" */ '../views/Models/Report.vue')
-  },
+    name: 'Report',
+    component: () => import(/* webpackChunkName: "report" */ '../views/models/Report.vue')
+  }
 ]
 
 const router = createRouter({
-  linkActiveClass : 'active',
+  linkActiveClass: 'active',
   history: createWebHistory(),
   routes
 })
