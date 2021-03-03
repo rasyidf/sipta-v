@@ -52,22 +52,31 @@
             aria-label="Open user menu"
           >
             <span class="avatar avatar-sm">FR</span>
-            <span
-              class="avatar avatar-sm"
-              style="background-image: url(./static/avatars/000m.jpg)"
-            ></span>
             <div class="d-none d-xl-block ps-2">
               <div>Rasyid</div>
-              <div class="mt-1 small text-muted">UI Designer</div>
+              <div class="mt-1 small text-muted">Universitas Muhammadiyah Yogyakarta</div>
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <a href="#" class="dropdown-item">Set status</a>
-            <a href="#" class="dropdown-item">Profile &amp; account</a>
-            <a href="#" class="dropdown-item">Feedback</a>
+            <router-link to="/docs" class="dropdown-item"
+              >Documentation</router-link
+            >
+            <router-link to="/settings/profile" class="dropdown-item"
+              >Profile &amp; account</router-link
+            >
+            <a
+              href="https://github.com/rasyidf/SIPTA/issues"
+              target="_blank"
+              class="dropdown-item"
+              >Feedback</a
+            >
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">Settings</a>
-            <a href="#" class="dropdown-item">Logout</a>
+            <router-link to="/settings" class="dropdown-item"
+              >Settings</router-link
+            >
+            <router-link to="/logout" class="dropdown-item"
+              >Logout</router-link
+            >
           </div>
         </div>
       </div>

@@ -3,23 +3,19 @@ import Home from '../views/Home.vue'
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/home',
+    path: '/', exact :true, 
+    alias: '/home',
     name: 'Home',
     component: Home
   },
   {
     path: '/docs',
     name: 'Docs',
-    default:'intro',
+    default: 'intro',
     component: () => import(/* webpackChunkName: "docs" */ '../views/Docs.vue'),
     children: [
-      { 
-        path:'intro',
+      {
+        path: 'intro',
         component: () => import(/* webpackChunkName: "intro" */ '../views/docs/intro.vue')
       },
       {
@@ -35,7 +31,13 @@ const routes = [
   {
     path: '/settings',
     name: 'Settings',
-    component: () => import(/* webpackChunkName: "settings" */ '../views/Settings.vue')
+    component: () => import(/* webpackChunkName: "settings" */ '../views/Settings.vue'),
+    children: [
+      {
+        path: 'profile',
+        component: () => import(/* webpackChunkName: "profile" */ '../views/Settings.vue')
+      },
+    ]
   },
   {
     path: '/features',
@@ -71,7 +73,12 @@ const routes = [
     path: '/report',
     name: 'Report',
     component: () => import(/* webpackChunkName: "report" */ '../views/models/Report.vue')
-  }
+  },
+  
+  {
+    path: '/logout',
+    name: 'logout'
+  },
 ]
 
 const router = createRouter({
