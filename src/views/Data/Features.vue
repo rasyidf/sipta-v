@@ -1,12 +1,16 @@
 <template>
   <div class="container-xl">
-    <PageHeader title="Features" subtitle="Models"/> 
-    <h1>This is an Features page</h1>
+    <PageHeader title="Features" subtitle="Models" /> 
   </div>
 </template>
-<script>
+<script> 
 import PageHeader from "@/components/PageHeader.vue";
-export default { 
-  components: { PageHeader },
+export default {
+  components: { PageHeader},
+  data(){
+    return {
+    
+    };
+  },
 };
 </script>
