@@ -83,7 +83,7 @@
       <div class="collapse navbar-collapse" id="navbar-menu">
         <ul class="navbar-nav pt-lg-3">
           <li class="nav-item">
-            <router-link to="home" active-class="active" class="nav-link">
+            <router-link to="/home" active-class="active" class="nav-link">
               <span class="nav-link-icon d-md-none d-lg-inline-block">
                 <i class="ti ti-home"></i>
               </span>
@@ -105,18 +105,18 @@
             <div class="dropdown-menu show">
               <div class="dropdown-menu-columns">
                 <div class="dropdown-menu-column">
-                  <router-link to="features" class="dropdown-item">
+                  <router-link to="/features" class="dropdown-item">
                     Features
                   </router-link>
-                  <router-link to="classes" class="dropdown-item">
+                  <router-link to="/classes" class="dropdown-item">
                     Classes
                   </router-link>
                 </div>
                 <div class="dropdown-menu-column">
-                  <router-link class="dropdown-item" to="data">
+                  <router-link class="dropdown-item" to="/data">
                     Data
                   </router-link>
-                  <router-link class="dropdown-item" to="stats">
+                  <router-link class="dropdown-item" to="/stats">
                     Statistics
                   </router-link>
                 </div>
@@ -138,13 +138,13 @@
             <div class="dropdown-menu show">
               <div class="dropdown-menu-columns">
                 <div class="dropdown-menu-column">
-                  <router-link class="dropdown-item" to="train">
+                  <router-link class="dropdown-item" to="/train">
                     Training
                   </router-link>
-                  <router-link class="dropdown-item" to="logs">
+                  <router-link class="dropdown-item" to="/logs">
                     Logging
                   </router-link>
-                  <router-link class="dropdown-item" to="report">
+                  <router-link class="dropdown-item" to="/report">
                     Report
                   </router-link>
                 </div>
@@ -152,7 +152,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="settings">
+            <router-link class="nav-link" to="/settings">
               <span class="nav-link-icon d-md-none d-lg-inline-block">
                 <i class="ti ti-settings"></i>
               </span>
@@ -160,7 +160,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="docs">
+            <router-link class="nav-link" to="/docs">
               <span class="nav-link-icon d-md-none d-lg-inline-block">
                 <i class="ti ti-file-text"></i>
               </span>

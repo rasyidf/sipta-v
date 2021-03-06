@@ -1,7 +1,7 @@
 <template>
   <ul class="pagination m-0 ms-auto">
     <li class="page-item">
-      <a class="page-link" @click="$emit('prev')" tabindex="-1" >
+      <a class="page-link" @click="$emit('prev')" tabindex="-1">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="icon"
@@ -20,9 +20,14 @@
         prev
       </a>
     </li>
-    
-    <li class="page-item" v-for="i in pages.data" :key="i" :class="{'page-item':true, 'active':(i === page)}">
-      <a class="page-link" @click="$emit('goto',i)" >{{i}}</a>
+
+    <li
+      class="page-item"
+      v-for="i in pages.data"
+      :key="i"
+      :class="{ 'page-item': true, active: i === page }"
+    >
+      <a class="page-link" @click="$emit('goto', i)">{{ i }}</a>
     </li>
     <li class="page-item">
       <a class="page-link" @click="nextPages">
@@ -49,39 +54,46 @@
 
 <script>
 import paginate from "paginate-array";
-  export default {
-    data(){
-      return {
-        Allpages:[],
-        pages :[],
-        pagenum : 1 
-      }
-    },
-    props: ['page', 'max'],
-    emits: ['next', 'prev', 'goto'],
-    mounted:function(){ 
-      const N = this.max;
-      this.Allpages = [...Array(N)].map((_, index) => index + 1);
-      this.pages = paginate(this.Allpages, this.pagenum,  5);
-      
-    },
-    methods:{ 
-      nextPages: function(){
-        const pg = this.page;
-        const pn = pg / 5 ;
-        this.pages = paginate(this.Allpages, pn,  5)
-        console.table(this.pages )
-        this.$emit('next')
+export default {
+  data() {
+    return {
+      Allpages: [],
+      pages: [],
+      pagenum: 1,
+      max: 5,
+    };
+  },
+  computed: {
+    MaxItems: {
+      get: function () {
+        return this.max;
       },
-      prevPages: function(){
-        const pg = this.page;
-        const pn = pg / 5;
-        this.pages = paginate(this.Allpages, pn,  5)
-        console.table(this.pages )
-        this.$emit('prev')        
-      }
-    }
-  }   
+      set: function (newValue) {
+        this.max = newValue;
+        const N = this.max;
+        this.Allpages = [...Array(N)].map((_, index) => index + 1);
+        this.pages = paginate(this.Allpages, this.pagenum, 5);
+      },
+    },
+  },
+  props: ["page"],
+  emits: ["next", "prev", "goto"],
+  mounted: function () {},
+  methods: {
+    nextPages: function () {
+      const pg = this.page;
+      const pn = pg / 5;
+      this.pages = paginate(this.Allpages, pn, 5);
+      this.$emit("next");
+    },
+    prevPages: function () {
+      const pg = this.page;
+      const pn = pg / 5;
+      this.pages = paginate(this.Allpages, pn, 5);
+      this.$emit("prev");
+    },
+  },
+};
 </script>
 
 <style>
