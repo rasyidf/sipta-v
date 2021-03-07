@@ -19,12 +19,20 @@ const routes = [
         component: () => import(/* webpackChunkName: "intro" */ '../views/docs/intro.vue')
       },
       {
-        path: 'init',
-        component: () => import(/* webpackChunkName: "intro" */ '../views/docs/intro.vue')
-      },
-      {
         path: 'changes',
         component: () => import(/* webpackChunkName: "changes" */ '../views/docs/changes.vue')
+      },
+      {
+        path: 'init',
+        component: () => import(/* webpackChunkName: "init" */ '../views/docs/start/init.vue')
+      }, 
+      {
+        path: 'preparation',
+        component: () => import(/* webpackChunkName: "prep" */ '../views/docs/start/prep.vue')
+      }      ,
+      {
+        path: 'models',
+        component: () => import(/* webpackChunkName: "model" */ '../views/docs/start/model.vue')
       }
     ]
   },
