@@ -1,17 +1,75 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body class="antialiased border-top-wide border-primary d-flex flex-column">
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <style>
+    @-webkit-keyframes spinner-border {
+      to {
+        transform: rotate(360deg)
+          /* rtl:ignore */
+        ;
+      }
+    }
+
+    <blade keyframes|%20spinner-border%20%7B>to {
+      transform: rotate(360deg)
+        /* rtl:ignore */
+      ;
+    }
+    }
+
+    .spinner-border {
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      vertical-align: text-bottom;
+      border: 0.25em solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      -webkit-animation: 0.75s linear infinite spinner-border;
+      animation: 0.75s linear infinite spinner-border;
+    }
+
+    .visually-hidden,
+    .visually-hidden-focusable:not(:focus):not(:focus-within) {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .centerspin {
+      display: flex !important;
+      justify-content: center !important;
+    }
+  </style>
+  <!-- <meta name="description"><%= htmlWebpackPlugin.options.desc %></meta> -->
+</head>
+
+<body class="antialiased border-top-wide border-primary d-flex flex-column">
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+      Please enable it to continue.</strong>
+  </noscript>
+  <div id="app">
+    <div class="centerspin">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+  <!-- built files will be auto injected -->
+</body>
+
 </html>
