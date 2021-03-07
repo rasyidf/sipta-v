@@ -1,3 +1,5 @@
 <template>
-    <h1>Welcome to Sipta</h1>
+  <blockquote>
+    <p>Documentation not created yet</p>
+  </blockquote>
 </template>

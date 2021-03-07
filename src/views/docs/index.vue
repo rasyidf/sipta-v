@@ -145,7 +145,7 @@
       </div>
       <div class="col-lg-9">
         <div class="card card-lg">
-          <div class="card-body">
+          <div class="card-body p-lg-4">
             <div class="markdown">
               <router-view/>
             </div>
