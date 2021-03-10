@@ -1,18 +1,15 @@
 <template>
   <ul class="pagination m-0 ms-auto">
-    <li class="page-item">
-      <a class="page-link" @click="$emit('prev')" tabindex="-1">
+    <li
+      class="page-item"
+      :class="{ disabled: !prevEnable }"
+      :aria-disabled="!prevEnable"
+    >
+      <a class="page-link" @click="prevPages" tabindex="-1">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="icon"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          viewbox="0 0 20 20"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <polyline points="15 6 9 12 15 18"></polyline>
@@ -27,23 +24,17 @@
       :key="i"
       :class="{ 'page-item': true, active: i === page }"
     >
-      <a class="page-link" @click="$emit('goto', i)">{{ i }}</a>
+      <a class="page-link" @click="goto(i)">{{ i }}</a>
     </li>
-    <li class="page-item">
-      <a class="page-link" @click="nextPages">
+    <li
+      class="page-item"
+      :class="{ disabled: !nextEnable }"
+      :aria-disabled="!nextEnable"
+    >
+      <a class="page-link align-content-center" @click="nextPages" tabindex="-1">
         next
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewbox="0 0 20 20">
+          
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <polyline points="9 6 15 12 9 18"></polyline>
         </svg>
@@ -54,13 +45,29 @@
 
 <script>
 import paginate from "paginate-array";
+
+function pager(data, start, max, next) {
+  if (data.length >= 5) {
+    const pa = start - 2 + (next ? 2 : 0);
+    const pn = Number.parseInt(pa / 5);
+    if (start == data.length) {
+      return paginate(data, Number.parseInt(start / 5), max);
+    } else if (pn > 0) {
+      return paginate(data, pn + 1, max);
+    } else {
+      return paginate(data, 1, max);
+    }
+  } else {
+    return { data: data };
+  }
+}
 export default {
   data() {
     return {
-      Allpages: [],
+      Allpage: [1],
       pages: [],
       pagenum: 1,
-      max: 5,
+      max: 20,
     };
   },
   computed: {
@@ -70,31 +77,47 @@ export default {
       },
       set: function (newValue) {
         this.max = newValue;
-        const N = this.max;
-        this.Allpages = [...Array(N)].map((_, index) => index + 1);
-        this.pages = paginate(this.Allpages, this.pagenum, 5);
       },
+    },
+    prevEnable: function () {
+      return this.page > 1;
+    },
+    nextEnable: function () {
+      return this.page < this.max;
     },
   },
   props: ["page"],
   emits: ["next", "prev", "goto"],
-  mounted: function () {},
+  mounted: function () {
+    const N = this.max;
+    this.Allpage = [...Array(N).keys()].map((x) => x + 1);
+      this.pages = pager(this.Allpage, this.page, 5, true);
+  },
   methods: {
     nextPages: function () {
-      const pg = this.page;
-      const pn = pg / 5;
-      this.pages = paginate(this.Allpages, pn, 5);
+      this.pages = pager(this.Allpage, this.page, 5, true);
       this.$emit("next");
     },
     prevPages: function () {
-      const pg = this.page;
-      const pn = pg / 5;
-      this.pages = paginate(this.Allpages, pn, 5);
+      this.pages = pager(this.Allpage, this.page, 5, false);
       this.$emit("prev");
+    },
+    goto: function (i) {
+      this.$emit("goto", i);
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
+.icon {
+  align-self: center;
+  width: 20  !important; 
+  height: 20 !important; 
+  stroke-width:2!important; 
+  stroke:currentColor !important; 
+  fill: none !important; 
+  stroke-linecap: round !important; 
+  stroke-linejoin: round !important; 
+}
 </style>
