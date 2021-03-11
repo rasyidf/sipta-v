@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <div class="card-header">
+    <div class="card-header" v-if="title">
       <h3 class="card-title">{{ title }}</h3>
     </div>
     <div class="card-body border-bottom py-3">
@@ -34,14 +34,14 @@
       <table class="table card-table table-vcenter text-nowrap datatable">
         <thead class="thead-dark">
           <tr>
-            <th>Id</th>
+            <th class="text-right" width="48">Id</th>
             <th>Title</th>
             <th>Completed</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="user in currPage.data" :key="user.username">
-            <td>{{ user.id }}</td>
+            <td class="text-right">{{ user.id }}</td>
             <td>{{ user.title }}</td>
             <td>{{ user.completed ? "✔" : "🔔" }}</td>
           </tr>
