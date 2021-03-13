@@ -35,8 +35,7 @@
         <thead class="thead-dark">
           <tr>
             <th class="text-right" width="48">Id</th>
-            <th>Title</th>
-            <th>Completed</th>
+            <th v-for="i in ['Title', 'Completed']" :key="i">{{i}}</th>  
           </tr>
         </thead>
         <tbody>
@@ -82,11 +81,12 @@ export default {
   },
   props: {
     title: String,
+    url:String,
   },
   components: { Pagination },
   mounted: function () {
     axios
-      .get("https://jsonplaceholder.typicode.com/todos")
+      .get(this.url)// "https://jsonplaceholder.typicode.com/todos"
       .then((response) => {
         this.data = response.data;
         this.currPage = paginate(this.data, this.newPage, this.size);
