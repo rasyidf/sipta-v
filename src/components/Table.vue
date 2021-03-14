@@ -41,8 +41,7 @@
         <tbody>
           <tr v-for="user in currPage.data" :key="user.username">
             <td class="text-right">{{ user.id }}</td>
-            <td>{{ user.title }}</td>
-            <td>{{ user.completed ? "✔" : "🔔" }}</td>
+            <td  v-for="data in user" :key="data">{{ data }}</td> 
           </tr>
         </tbody>
       </table>
